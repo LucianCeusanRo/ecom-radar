@@ -19,3 +19,7 @@ state.json
 feedback.json
 dashboard/index.html
 dashboard/data/
+
+# Local market history created by tests or a run
+history.db
+*.db
