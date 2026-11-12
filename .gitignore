@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# Runtime data
+out/
+data/
+state.json
+*.log
+*.lock
+# Secrets (never commit)
+.env
+*.txt
+!requirements.txt
+.shopify_token.json
+*secret*
+*token*.json
+feedback.json
+dashboard/index.html
+dashboard/data/

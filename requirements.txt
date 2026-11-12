@@ -1,0 +1,8 @@
+requests
+playwright
+curl_cffi
+Pillow
+numpy
+rapidocr_onnxruntime
+fastapi
+meta-ads-collector

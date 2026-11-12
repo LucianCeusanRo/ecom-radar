@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="theme-color" content="#0B0F1A"/>
+<title>🛒 Ecom Radar · produse ads-monitor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23A855F7'/%3E%3Cstop offset='1' stop-color='%2306B6D4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle'%3E%F0%9F%9B%92%3C/text%3E%3C/svg%3E"/>
+<style>
+:root{--r:18px;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+--g1:#A855F7;--g2:#06B6D4;--g3:#F43F5E;--ok:#22C55E;--warn:#F59E0B;--bad:#EF4444;--gold:#FACC15}
+[data-theme=dark]{--bg:#0B0F1A;--bg2:#111827;--card:#131A2A;--card2:#182136;--line:#24304A;--txt:#E8EDF7;--mut:#8C98B2;--shadow:0 10px 30px rgba(0,0,0,.35);--chip:#1D2740}
+[data-theme=light]{--bg:#F4F6FB;--bg2:#FFFFFF;--card:#FFFFFF;--card2:#F7F8FC;--line:#E3E7F0;--txt:#121826;--mut:#5E6A82;--shadow:0 10px 26px rgba(30,41,59,.10);--chip:#EEF1F8}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt)}
+body{font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;min-height:100vh;
+background-image:radial-gradient(1200px 500px at 10% -10%,rgba(168,85,247,.16),transparent 60%),radial-gradient(900px 400px at 100% 0,rgba(6,182,212,.14),transparent 60%);background-attachment:fixed;transition:background-color .3s,color .3s}
+a{color:inherit}button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:calc(var(--st) + 12px) 16px calc(var(--sb) + 96px)}
+header.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.02em}
+.logo .ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 6px 20px rgba(168,85,247,.4);animation:float 4s ease-in-out infinite}
+.logo small{display:block;font-size:12px;font-weight:600;color:var(--mut);letter-spacing:0}
+.grad{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:12.5px;font-weight:700;white-space:nowrap}
+.ibtn{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 12px;cursor:pointer;font-weight:700;transition:transform .15s,background .2s}
+.ibtn:hover{transform:translateY(-1px);background:var(--card2)}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:6px;border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);position:sticky;top:8px;z-index:20;scrollbar-width:none;margin-bottom:16px}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:none;border:0;background:transparent;padding:9px 14px;border-radius:12px;cursor:pointer;font-weight:750;color:var(--mut);display:flex;gap:7px;align-items:center;transition:all .2s}
+nav.tabs button:hover{color:var(--txt);background:var(--chip)}
+nav.tabs button.on{color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 6px 18px rgba(168,85,247,.35)}
+nav.tabs .e{font-size:17px}
+.view{display:none;animation:fadeUp .35s ease both}.view.on{display:block}
+h2.vt{font-size:24px;margin:4px 2px 4px;letter-spacing:-.02em}.vsub{color:var(--mut);margin:0 2px 14px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat:after{content:"";position:absolute;inset:auto -30px -40px auto;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.18),transparent 70%)}
+.stat b{display:block;font-size:24px;font-weight:900;letter-spacing:-.02em}.stat span{color:var(--mut);font-size:12.5px;font-weight:650}
+.tool{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:14px;box-shadow:var(--shadow)}
+.tool input[type=search],.tool select,.field input,.field select{background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:8px 11px;outline:none;min-width:0}
+.tool input[type=search]{flex:1 1 220px}
+.tool label{font-size:12.5px;color:var(--mut);font-weight:700;display:flex;align-items:center;gap:6px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 11px;cursor:pointer;font-weight:700;font-size:13px;transition:all .15s}
+.chip.on{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;animation:fadeUp .45s ease both;animation-delay:calc(var(--d,0)*40ms);transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:rgba(168,85,247,.55);box-shadow:0 16px 40px rgba(168,85,247,.18)}
+.car{position:relative;aspect-ratio:4/3.3;background:var(--card2);overflow:hidden}
+.slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;height:100%;scroll-snap-align:center;position:relative;display:grid;place-items:center}
+.slide img{width:100%;height:100%;object-fit:contain;background:#0d1220}
+[data-theme=light] .slide img{background:#eef1f7}
+.slide .lbl{position:absolute;left:10px;bottom:10px;font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:8px;background:rgba(0,0,0,.6);color:#fff}
+.ph{width:100%;height:100%;display:grid;place-items:center;text-align:center;color:#fff;font-weight:800;padding:20px}
+.ph .em{font-size:54px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));animation:float 3.5s ease-in-out infinite}
+.ph small{display:block;opacity:.85;font-weight:650;font-size:12px;margin-top:6px}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;cursor:pointer;font-size:18px;opacity:0;transition:opacity .2s}
+.car:hover .arrow{opacity:1}.arrow.l{left:8px}.arrow.r{right:8px}
+.dots{position:absolute;bottom:8px;right:10px;display:flex;gap:5px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);transition:all .2s}.dots i.on{background:#fff;width:18px;border-radius:4px}
+.badges{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none}
+.b{font-size:11.5px;font-weight:850;padding:4px 8px;border-radius:9px;background:rgba(0,0,0,.62);color:#fff;backdrop-filter:blur(6px)}
+.b.nota{background:linear-gradient(135deg,#F59E0B,#EF4444)}.b.nota.hi{background:linear-gradient(135deg,#22C55E,#06B6D4)}.b.nota.na{background:rgba(0,0,0,.55)}
+.b.bf{background:#111;border:1px solid #FACC15;color:#FACC15}.b.sent{background:rgba(34,197,94,.85)}
+.cb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:9px;flex:1}
+.cb h3{margin:0;font-size:16px;line-height:1.3;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--mut);font-size:12.5px;font-weight:600}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pr{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:7px 8px}
+.pr span{display:block;font-size:11px;color:var(--mut);font-weight:750;text-transform:uppercase;letter-spacing:.04em}
+.pr b{font-size:16.5px;font-weight:900;font-variant-numeric:tabular-nums}
+.pr.pos b{color:var(--ok)}.pr.neg b{color:var(--bad)}
+.pr a{text-decoration:none}.pr a:hover b{text-decoration:underline}
+.sbar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--chip)}
+.sbar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.k1{background:#64748B}.k2{background:#F59E0B}.k3{background:#3B82F6}.k4{background:#A855F7}.k5{background:#22C55E}
+.legend{display:flex;gap:9px;flex-wrap:wrap;font-size:11.5px;color:var(--mut);font-weight:650}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.angs{display:flex;gap:5px;flex-wrap:wrap}
+.ang{font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(168,85,247,.12);color:#C084FC;border:1px solid rgba(168,85,247,.3)}
+[data-theme=light] .ang{color:#7E22CE}
+.acts{display:flex;gap:6px;margin-top:auto;flex-wrap:wrap}
+.btn{flex:1;border:0;border-radius:12px;padding:9px 10px;cursor:pointer;font-weight:800;font-size:13.5px;text-align:center;text-decoration:none;transition:transform .12s,filter .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}.btn.p{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+.btn.s{background:var(--chip);border:1px solid var(--line)}.btn:hover{filter:brightness(1.08)}
+.empty{text-align:center;padding:50px 20px;color:var(--mut)}.empty .em{font-size:52px}
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(5,8,15,.65);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:calc(var(--st) + 16px) 12px 40px}
+.modal.on{display:flex;animation:fade .2s ease}
+.mbox{width:min(980px,100%);background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;animation:pop .28s cubic-bezier(.2,.9,.3,1.2)}
+.mhead{display:flex;gap:10px;align-items:flex-start;padding:16px 18px;border-bottom:1px solid var(--line)}
+.mhead h3{margin:0;font-size:20px;flex:1;letter-spacing:-.01em}
+.mgrid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:16px;padding:16px 18px}
+.mgrid .car{aspect-ratio:9/12;border-radius:16px}
+.sec{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:12px}
+.sec h4{margin:0 0 8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:5px 12px;font-size:14px}.kv span{color:var(--mut)}.kv b{text-align:right;font-variant-numeric:tabular-nums}
+.hooks li{margin:3px 0}.hooks{margin:4px 0 8px;padding-left:18px;color:var(--mut)}
+.scorebar{display:grid;grid-template-columns:110px 1fr 30px;gap:8px;align-items:center;font-size:13px;margin:4px 0}
+.scorebar .t{height:8px;border-radius:5px;background:var(--chip);overflow:hidden}.scorebar .t i{display:block;height:100%;background:linear-gradient(90deg,var(--g1),var(--g2))}
+.content-prev{max-height:280px;overflow:auto;font-size:13.5px;white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.field{display:grid;gap:4px;margin-bottom:10px}.field label{font-size:12.5px;font-weight:750;color:var(--mut)}
+.field input,.field select{width:100%}
+input[type=range]{width:100%;accent-color:#A855F7}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
+.kpi{border-radius:16px;padding:12px;background:var(--card2);border:1px solid var(--line)}
+.kpi span{display:block;color:var(--mut);font-size:12px;font-weight:750}.kpi b{font-size:22px;font-weight:900}
+.kpi.big{background:linear-gradient(135deg,rgba(168,85,247,.22),rgba(6,182,212,.18));border-color:rgba(168,85,247,.45)}
+.formula{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:var(--bg2);border:1px dashed var(--line);border-radius:12px;padding:10px;color:var(--mut);white-space:pre-wrap}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px}table.t th,table.t td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right}
+table.t th:first-child,table.t td:first-child{text-align:left}table.t tr.hl{background:rgba(168,85,247,.12);font-weight:800}
+svg text{fill:var(--mut);font-size:11px}
+/* podium */
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end;margin-bottom:16px}
+.pod{border-radius:20px;padding:14px;text-align:center;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;animation:fadeUp .5s ease both}
+.pod:hover{transform:translateY(-5px)}.pod .medal{font-size:40px}.pod img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;margin:6px 0;background:var(--card2)}
+.pod.g1{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 40px rgba(250,204,21,.25)}
+.pod h4{margin:4px 0;font-size:14.5px;line-height:1.3}
+.rank{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--card);border:1px solid var(--line);margin-bottom:8px;cursor:pointer;transition:transform .15s}
+.rank:hover{transform:translateX(4px)}.rank .n{font-weight:900;font-size:18px;width:30px;text-align:center;color:var(--mut)}
+.rank img,.rank .mini{width:46px;height:46px;border-radius:10px;object-fit:cover;background:var(--card2);display:grid;place-items:center;font-size:22px}
+.rank .tt{flex:1;min-width:0}.rank .tt b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rank .tt span{color:var(--mut);font-size:12.5px}
+.bfhero{border-radius:22px;padding:22px;margin-bottom:16px;color:#fff;background:linear-gradient(135deg,#0a0a0a,#2a2a2a 60%,#3d2f00);border:1px solid #FACC15;position:relative;overflow:hidden}
+.bfhero h2{margin:0;font-size:30px;letter-spacing:-.02em}.bfhero .cd{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.bfhero .cd div{background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.5);border-radius:14px;padding:8px 14px;text-align:center;min-width:72px}
+.bfhero .cd b{display:block;font-size:26px;color:#FACC15}.bfhero .cd span{font-size:11px;opacity:.8}
+.bfhero:after{content:"🖤🛍️";position:absolute;right:18px;top:10px;font-size:64px;opacity:.25}
+.tl-day{margin:18px 0 8px;font-weight:900;display:flex;align-items:center;gap:8px}.tl-day:before{content:"";width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2))}
+.toast{position:fixed;left:50%;bottom:calc(var(--sb) + 86px);transform:translateX(-50%) translateY(30px);background:#111827;color:#fff;padding:11px 16px;border-radius:14px;font-weight:750;opacity:0;transition:all .3s;z-index:90;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.note{font-size:12.5px;color:var(--mut)}
+footer{margin-top:26px;color:var(--mut);font-size:12.5px;text-align:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (max-width:820px){.mgrid,.calc{grid-template-columns:1fr}.mgrid .car{aspect-ratio:4/4.4}.podium{grid-template-columns:1fr}.pod{order:0!important}}
+@media (max-width:640px){
+ nav.tabs{position:fixed;top:auto;bottom:calc(var(--sb) + 8px);left:8px;right:8px;margin:0;justify-content:space-between;padding:5px}
+ nav.tabs button{flex-direction:column;gap:1px;padding:6px 6px;font-size:10.5px;flex:1}
+ nav.tabs .e{font-size:20px}
+ .logo{font-size:19px}.prices{grid-template-columns:1fr 1fr 1fr}.grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(3,1fr);gap:6px}.stat{padding:8px 9px}.stat b{font-size:17px}.stat span{font-size:10.5px;line-height:1.25;display:block}
+ .tool label{flex:1 1 45%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="logo"><div class="ic">🛒</div><div><span class="grad">Ecom Radar</span><small>produse găsite de ads-monitor · doar date reale</small></div></div>
+  <div class="sp"></div>
+  <span class="pill" id="upd">⏳ se încarcă…</span>
+  <button class="ibtn" id="themeBtn" title="Temă">🌙</button>
+  <button class="ibtn" id="reloadBtn" title="Reîncarcă datele">🔄</button>
+</header>
+<nav class="tabs" id="tabs">
+  <button data-v="produse"><span class="e">🛍️</span>Produse</button>
+  <button data-v="top"><span class="e">🏆</span>Top winneri</button>
+  <button data-v="calc"><span class="e">🧮</span>Profit calculator</button>
+  <button data-v="bf"><span class="e">🖤</span>Black Friday</button>
+  <button data-v="istoric"><span class="e">🕒</span>Istoric</button>
+  <button data-v="setari"><span class="e">⚙️</span>Setări</button>
+</nav>
+
+<section class="view" id="v-produse">
+  <div class="stats" id="stats"></div>
+  <div class="tool">
+    <input type="search" id="q" placeholder="🔎 Caută produs, magazin, unghi…"/>
+    <div class="chips" id="srcChips"></div>
+  </div>
+  <div class="tool">
+    <label>⭐ Nota min <input type="range" id="minNota" min="0" max="10" step="1" value="0" style="width:110px"/> <b id="minNotaV">toate</b></label>
+    <label>💸 Ali max <input type="range" id="maxAli" min="1" max="50" step="1" value="50" style="width:110px"/> <b id="maxAliV">50 lei</b></label>
+    <label>📅 <select id="period"><option value="0">Oricând</option><option value="7">Ultimele 7 zile</option><option value="30">Ultimele 30 zile</option></select></label>
+    <label>↕️ <select id="sort">
+      <option value="date">Cele mai noi</option><option value="nota">Nota ↓</option><option value="profit">Profit/comandă ↓</option>
+      <option value="pct">Profit % ↓</option><option value="ali">Preț Ali ↑</option><option value="sell">Preț vânzare ↓</option></select></label>
+    <label><input type="checkbox" id="onlySent"/> doar trimise pe grup</label>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="view" id="v-top">
+  <h2 class="vt">🏆 Top winneri</h2>
+  <p class="vsub">Clasament după <b>NOTA x/10</b> dată de ads-monitor (Claude), apoi după profit % la ROAS țintă. Produsele fără notă apar după cele notate.</p>
+  <div class="podium" id="podium"></div>
+  <div id="ranks"></div>
+</section>
+
+<section class="view" id="v-calc">
+  <h2 class="vt">🧮 Profit calculator</h2>
+  <p class="vsub">Formula echipei pentru firmă <b>neplătitoare de TVA</b>. Ținta: <b>20% profit la ROAS 4</b>.</p>
+  <div class="calc">
+    <div class="panel">
+      <div class="field"><label>📦 Produs din listă (opțional)</label><select id="cProd"><option value="">— introduc manual —</option></select></div>
+      <div class="field"><label>💰 Preț vânzare / comandă (lei)</label><input type="number" id="cPrice" min="0" step="1" value="89"/></div>
+      <div class="field"><label>🛒 Cost produs / buc (lei, AliExpress)</label><input type="number" id="cCost" min="0" step="0.01" value="9"/></div>
+      <div class="field"><label>🧾 Comenzi (N)</label><input type="number" id="cN" min="1" step="1" value="100"/></div>
+      <div class="field"><label>📈 ROAS: <b id="cRoasV">4.0</b></label><input type="range" id="cRoas" min="1" max="8" step="0.1" value="4"/></div>
+      <details><summary class="note" style="cursor:pointer">⚙️ Parametri formulă (din Setări)</summary>
+        <div class="note" id="cParams" style="margin-top:6px"></div></details>
+    </div>
+    <div>
+      <div class="kpis" id="cKpis"></div>
+      <div class="panel" style="margin-bottom:12px"><h4 style="margin:0 0 6px">📊 Profit % în funcție de ROAS</h4><div id="cChart"></div></div>
+      <div class="panel" style="margin-bottom:12px"><h4 style="margin:0 0 6px">🧱 Unde se duc banii (per comandă)</h4><div id="cBreak"></div></div>
+      <div class="panel" style="margin-bottom:12px"><table class="t" id="cTable"></table></div>
+      <div class="formula" id="cFormula"></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v-bf">
+  <div class="bfhero"><h2>🖤 Black Friday & Crăciun</h2>
+    <div style="opacity:.85;margin-top:4px">Produse marcate de ads-monitor ca potrivite pentru Q4 (Black Friday / Crăciun)</div>
+    <div class="cd" id="bfCd"></div>
+    <div class="note" style="color:#ddd;margin-top:8px">Numărătoare inversă până la Black Friday global (vineri 27.11.2026). Magazinele din RO își anunță separat data.</div>
+  </div>
+  <div class="grid" id="bfGrid"></div>
+  <h3 style="margin:20px 2px 8px" id="bfKwT"></h3>
+  <div class="grid" id="bfKw"></div>
+</section>
+
+<section class="view" id="v-istoric">
+  <h2 class="vt">🕒 Istoric</h2>
+  <p class="vsub">Rulări ads-monitor pe zi (din <code>out/run_*.json</code>) și produsele găsite, în ordine cronologică.</p>
+  <div class="panel" style="margin-bottom:14px"><div id="hChart"></div><div class="legend" style="margin-top:6px"><span><i class="k3"></i>produse verificate</span><span><i class="k4"></i>potriviri OK</span><span><i class="k5"></i>trimise pe grup</span></div></div>
+  <div id="timeline"></div>
+</section>
+
+<section class="view" id="v-setari">
+  <h2 class="vt">⚙️ Setări</h2>
+  <div class="calc">
+    <div class="panel">
+      <h4 style="margin:0 0 10px">🎨 Aspect</h4>
+      <div class="chips" id="themeChips" style="margin-bottom:14px">
+        <button class="chip" data-t="auto">🖥️ Auto</button><button class="chip" data-t="dark">🌙 Întunecat</button><button class="chip" data-t="light">☀️ Luminos</button></div>
+      <h4 style="margin:0 0 10px">🧮 Formula profit (neplătitor TVA)</h4>
+      <div class="field"><label>Rată livrare / încasare (B = rată × A)</label><input type="number" id="sDel" step="0.01" min="0" max="1"/></div>
+      <div class="field"><label>Curier / comandă (lei)</label><input type="number" id="sCour" step="0.5" min="0"/></div>
+      <div class="field"><label>Taxă extra / comandă (lei)</label><input type="number" id="sFee" step="0.1" min="0"/></div>
+      <div class="field"><label>TVA pe reclame (0.21 = 21%)</label><input type="number" id="sVat" step="0.01" min="0"/></div>
+      <div class="field"><label>ROAS țintă pe carduri</label><input type="number" id="sRoas" step="0.1" min="1"/></div>
+      <div class="field"><label>Profit țintă (%)</label><input type="number" id="sTgt" step="1" min="0"/></div>
+      <div class="acts"><button class="btn p" id="sSave">💾 Salvează</button><button class="btn s" id="sReset">↩️ Implicite</button></div>
+    </div>
+    <div>
+      <div class="panel" style="margin-bottom:12px"><h4 style="margin:0 0 8px">🗂️ Date</h4><div class="kv" id="sInfo"></div></div>
+      <div class="panel" style="margin-bottom:12px"><h4 style="margin:0 0 8px">⚡ Acțiuni</h4>
+        <div class="acts"><button class="btn p" id="sRefresh">🔄 Reconstruiește datele acum</button><button class="btn s" id="sCsv">📥 Export CSV</button></div>
+        <p class="note" id="sRefreshNote">Datele se reconstruiesc automat la 15 minute din <code>ads-monitor/out</code> (task Windows „EcomRadarRefresh”).</p></div>
+      <div class="panel"><h4 style="margin:0 0 8px">ℹ️ Despre cifre</h4>
+        <p class="note">Toate produsele, prețurile AliExpress, prețurile concurenței, notele și unghiurile vin din fișierele ads-monitor. Nimic nu e inventat. Unde un câmp lipsește, apare „—”.
+        Prețul recomandat vine din conținutul Shopify generat de ads-monitor; dacă lipsește, e calculat cu aceeași regulă ca <code>content.py</code> (prag 20% la ROAS 4, aliniat la prețul concurenței, terminat în 9).
+        Profitul pe carduri folosește formula echipei de mai sus; în Detalii apare și estimarea internă ads-monitor (marfă +21% TVA, 10 lei transport furnizor + 20 lei curier).</p></div>
+    </div>
+  </div>
+</section>
+<footer>🛒 Ecom Radar · <span id="foot"></span></footer>
+</div>
+
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<!--ECOM_DATA-->
+<script>
+(function(){
+"use strict";
+var OFFLINE=!!window.ECOM_DATA, IMGBASE=OFFLINE?"data/img/":"/ecom/img/";
+var LS="ecomRadar.v1", DEF={theme:"dark",delivery:0.8,courier:20,fee:0.5,ads_vat:0.21,roas:4,target_pct:20};
+var S=Object.assign({},DEF,load()); var D=null, P=[];
+var F={q:"",src:"Toate",minNota:0,maxAli:50,period:0,sort:"date",onlySent:false};
+function load(){try{return JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){return{}}}
+function save(){try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}}
+function $(s,r){return (r||document).querySelector(s)} function $$(s,r){return [].slice.call((r||document).querySelectorAll(s))}
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function safeUrl(u){u=String(u||"");return /^https?:\/\//i.test(u)?u:null}
+function lei(v,d){if(v==null||isNaN(v))return "—";d=d==null?(Math.abs(v)<100&&v%1?2:0):d;return Number(v).toLocaleString("ro-RO",{minimumFractionDigits:d,maximumFractionDigits:d})+" lei"}
+function pct(v){return v==null||!isFinite(v)?"—":(Math.round(v*10)/10).toLocaleString("ro-RO")+"%"}
+function toast(t){var el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove("on")},2200)}
+// ---------- theme
+function applyTheme(){var t=S.theme==="auto"?(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"):S.theme;
+ document.documentElement.setAttribute("data-theme",t);$("#themeBtn").textContent=t==="dark"?"🌙":"☀️";
+ $$("#themeChips .chip").forEach(function(c){c.classList.toggle("on",c.dataset.t===S.theme)})}
+$("#themeBtn").onclick=function(){S.theme=(document.documentElement.getAttribute("data-theme")==="dark")?"light":"dark";save();applyTheme();render()};
+$$("#themeChips .chip").forEach(function(c){c.onclick=function(){S.theme=c.dataset.t;save();applyTheme();render()}});
+// ---------- formula (team, neplatitor TVA)
+function calc(price,cost,roas,n){n=n||1;if(!price||cost==null)return null;var A=price*n,B=S.delivery*A,E=(S.courier+S.fee)*n,ads=A/roas*(1+S.ads_vat),H=S.delivery*cost*n,
+ pr=B-E-ads-H,base=B-E-H,den=S.delivery*(1-S.target_pct/100)-(1+S.ads_vat)/roas;
+ return{A:A,B:B,E:E,ads:ads,H:H,refuz:A-B,profit:pr,pct:B?pr/B*100:null,be:base>0?A*(1+S.ads_vat)/base:null,minp:den>0?(S.courier+S.fee+S.delivery*cost)/den:null}}
+function econ(p){return calc(p.recommended_price,p.ali_price,S.roas,1)}
+// ---------- helpers for products
+var SRC_EMO={"Meta":"📘","TikTok":"🎵","Bazarul":"🧺","Manual":"✍️","Shopify feed":"🏬"};
+var CAT_EMO=[[/ochelar/i,"👓"],[/gleznier|ortho|sosete|șosete|colant/i,"🧦"],[/cotet|coteț|gaini|găini|ou/i,"🐔"],[/pescuit/i,"🎣"],[/anvelop|vulcan|auto|zgar|zgâr|manometru/i,"🚗"],
+ [/ceara|ceară|lemn|parchet/i,"🪵"],[/craciun|crăciun|brad|icoan/i,"🎄"],[/colier|bijut/i,"📿"],[/carlig|cârlig|tapet|perete/i,"🧱"],[/pantofi|incalt|încălț/i,"👟"],
+ [/filet|unelt|ascut|ascuț|bormas|bormaș|ruleta|ruletă/i,"🛠️"],[/machiaj|pensul/i,"💄"],[/prelat/i,"⛺"],[/robinet/i,"🚰"]];
+function emo(p){var t=p.title||"";for(var i=0;i<CAT_EMO.length;i++)if(CAT_EMO[i][0].test(t))return CAT_EMO[i][1];return "📦"}
+function hue(s){var h=0;s=String(s||"");for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%360;return h}
+function ph(p,big){var h=hue(p.id);return '<div class="ph" style="background:linear-gradient(135deg,hsl('+h+',70%,45%),hsl('+((h+60)%360)+',75%,40%))"><div><div class="em">'+emo(p)+'</div><small>'+(big?"fără poză salvată pentru acest produs":"fără poză salvată")+'</small></div></div>'}
+function firstImg(p){return p.images&&p.images.length?IMGBASE+encodeURIComponent(p.images[0].src):null}
+function carousel(p,big){var im=p.images||[];var slides=im.length?im.map(function(x){return '<div class="slide"><img loading="lazy" src="'+IMGBASE+encodeURIComponent(x.src)+'" alt="'+esc(x.label)+'"/><span class="lbl">'+esc(x.label)+'</span></div>'}).join(""):'<div class="slide">'+ph(p,big)+'</div>';
+ var nav=im.length>1?'<button class="arrow l" data-dir="-1">‹</button><button class="arrow r" data-dir="1">›</button><div class="dots">'+im.map(function(_,i){return '<i class="'+(i?"":"on")+'"></i>'}).join("")+'</div>':"";
+ return '<div class="car"><div class="slides">'+slides+'</div>'+nav+badges(p)+'</div>'}
+function badges(p){var n=p.nota;var b='<div class="badges">'+(n!=null?'<span class="b nota '+(n>=7?"hi":"")+'">⭐ '+esc(n)+'/10</span>':'<span class="b nota na">⭐ fără notă</span>')+
+ '<span class="b">'+(SRC_EMO[p.source]||"🔎")+' '+esc(p.source)+'</span>'+(p.bf?'<span class="b bf">🖤 BF</span>':"")+(p.pet?'<span class="b">🐾 PET</span>':"")+(p.sent?'<span class="b sent">✅ trimis</span>':"")+'</div>';return b}
+function wireCar(root){$$(".car",root).forEach(function(c){var s=$(".slides",c);if(!s||c._w)return;c._w=1;var dots=$$(".dots i",c);
+ s.addEventListener("scroll",function(){var i=Math.round(s.scrollLeft/s.clientWidth);dots.forEach(function(d,j){d.classList.toggle("on",i===j)})},{passive:true});
+ $$(".arrow",c).forEach(function(a){a.onclick=function(e){e.stopPropagation();s.scrollBy({left:s.clientWidth*+a.dataset.dir,behavior:"smooth"})}})})}
+function sbar(e){if(!e)return "";var A=e.A,seg=[["k1",e.refuz,"refuz/retur"],["k2",e.H,"marfă"],["k3",e.E,"curier+taxe"],["k4",e.ads,"reclame+TVA"],["k5",Math.max(0,e.profit),"profit"]];
+ var tot=seg.reduce(function(a,s){return a+s[1]},0)||A;return '<div class="sbar" title="Unde se duce prețul de vânzare">'+seg.map(function(s){return '<i class="'+s[0]+'" style="width:'+(s[1]/tot*100).toFixed(1)+'%" title="'+s[2]+': '+lei(s[1])+'"></i>'}).join("")+'</div>'}
+function legend(){return '<div class="legend"><span><i class="k1"></i>refuz</span><span><i class="k2"></i>marfă</span><span><i class="k3"></i>curier</span><span><i class="k4"></i>reclame</span><span><i class="k5"></i>profit</span></div>'}
+function dfmt(s){if(!s)return "—";var d=new Date(s.replace(" ","T"));if(isNaN(d))return s;return d.toLocaleDateString("ro-RO",{day:"2-digit",month:"short"})+(s.length>10?" "+s.slice(11,16):"")}
+function card(p,i){var e=econ(p);var al=safeUrl(p.ali_url);
+ return '<article class="card" style="--d:'+Math.min(i,20)+'" data-id="'+esc(p.id)+'">'+carousel(p)+'<div class="cb"><h3 title="'+esc(p.title)+'">'+esc(p.title||"—")+'</h3>'+
+ '<div class="meta"><span>📅 '+esc(dfmt(p.found_at))+'</span><span>🏪 '+esc(p.page||"—")+'</span></div>'+
+ '<div class="prices"><div class="pr">'+(al?'<a href="'+esc(al)+'" target="_blank" rel="noopener noreferrer">':'')+'<span>🛒 Ali</span><b>'+lei(p.ali_price,2)+'</b>'+(al?'</a>':'')+'</div>'+
+ '<div class="pr"><span>🏷️ Vinde la</span><b>'+lei(p.recommended_price,0)+'</b></div><div class="pr '+(e&&e.profit>=0?"pos":"neg")+'"><span>💚 Profit @'+S.roas+'</span><b>'+(e?lei(e.profit,0):"—")+'</b></div></div>'+
+ sbar(e)+'<div class="meta" style="justify-content:space-between"><span>📊 '+(e?pct(e.pct)+' profit':'—')+'</span><span>⚖️ break-even ROAS '+(e&&e.be?e.be.toFixed(2):"—")+'</span></div>'+
+ '<div class="angs">'+(p.angles||[]).slice(0,4).map(function(a){return '<span class="ang">🎯 '+esc(a.name)+'</span>'}).join("")+'</div>'+
+ '<div class="acts"><button class="btn p" data-copy="'+esc(p.id)+'">📋 Copiază Shopify</button><button class="btn s" data-det="'+esc(p.id)+'">🔍 Detalii</button></div></div></article>'}
+// ---------- copy content
+function contentText(p){var c=p.content||{};if(c.txt)return c.txt;var L=["TITLU: "+(c.title||p.shop_title||p.title||""),"PRET: "+(p.recommended_price||"")+" lei"+(p.compare_at?"   (compare-at: "+p.compare_at+" lei)":""),""];
+ if(c.hook)L.push("HOOK: "+c.hook,"");(p.angles||[]).forEach(function(a,i){L.push((i+1)+". "+a.name);(a.hooks||[]).forEach(function(h){L.push("   - "+h)})});
+ if(p.cta)L.push("","CTA: "+p.cta);L.push("","(Continut Shopify complet negenerat de ads-monitor pentru acest produs: titlu, pret si unghiurile reale din pont.)");return L.join("\n")}
+function contentHtml(p){var c=p.content||{};if(c.html)return c.html;var h="<h2>"+esc(p.title)+"</h2>\n<p><strong>"+esc(p.recommended_price)+",00 lei</strong>"+(p.compare_at?" <s>"+esc(p.compare_at)+",00 lei</s>":"")+"</p>\n<ul>\n";
+ (p.angles||[]).forEach(function(a){h+="  <li><strong>"+esc(a.name)+"</strong>"+((a.hooks||[])[0]?" – "+esc(a.hooks[0]):"")+"</li>\n"});return h+"</ul>"}
+function copy(t){function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("📋 Copiat!")}catch(e){toast("Nu pot copia")}ta.remove()}
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(function(){toast("📋 Copiat în clipboard!")},fb);else fb()}
+// ---------- filters & render products
+function byId(id){for(var i=0;i<P.length;i++)if(P[i].id===id)return P[i]}
+function filtered(){var q=F.q.trim().toLowerCase(),now=Date.now();return P.filter(function(p){
+ if(F.src!=="Toate"&&p.source!==F.src)return false;if(F.minNota&&!(p.nota>=F.minNota))return false;if(F.maxAli<+$("#maxAli").max&&p.ali_price>F.maxAli)return false;
+ if(F.onlySent&&!p.sent)return false;if(F.period&&p.found_at&&(now-new Date(p.found_at.replace(" ","T")))/864e5>F.period)return false;
+ if(q){var hay=[p.title,p.shop_title,p.page,p.source,(p.angles||[]).map(function(a){return a.name+" "+(a.hooks||[]).join(" ")}).join(" ")].join(" ").toLowerCase();if(hay.indexOf(q)<0)return false}
+ return true}).sort(sorter(F.sort))}
+function sorter(k){return function(a,b){var ea=econ(a)||{},eb=econ(b)||{};switch(k){
+ case "nota":return (b.nota==null?-1:b.nota)-(a.nota==null?-1:a.nota)||(eb.pct||0)-(ea.pct||0);
+ case "profit":return (eb.profit||-1e9)-(ea.profit||-1e9);case "pct":return (eb.pct||-1e9)-(ea.pct||-1e9);
+ case "ali":return a.ali_price-b.ali_price;case "sell":return (b.recommended_price||0)-(a.recommended_price||0);
+ default:return String(b.found_at||"").localeCompare(String(a.found_at||""))}}}
+function renderStats(){var ps=P.map(econ).filter(Boolean),best=P.slice().sort(sorter("profit"))[0],nn=P.filter(function(p){return p.nota!=null});
+ var avg=ps.length?ps.reduce(function(a,e){return a+e.pct},0)/ps.length:null;
+ $("#stats").innerHTML=[["🛍️",P.length,"produse găsite"],["✅",P.filter(function(p){return p.sent}).length,"trimise pe grup"],["⭐",nn.length?(nn.reduce(function(a,p){return a+p.nota},0)/nn.length).toFixed(1)+"/10":"—","nota medie ("+nn.length+" notate)"],
+ ["💚",best?lei(econ(best).profit,0):"—","cel mai mare profit/comandă"],["📊",pct(avg),"profit mediu @ROAS "+S.roas],["🖤",P.filter(function(p){return p.bf}).length,"potrivite Black Friday"]]
+ .map(function(s,i){return '<div class="stat" style="animation:fadeUp .4s ease both;animation-delay:'+i*50+'ms"><span>'+s[0]+' '+s[2]+'</span><b>'+esc(s[1])+'</b></div>'}).join("")}
+function renderProducts(){var L=filtered();$("#grid").innerHTML=L.length?L.map(card).join(""):'<div class="empty" style="grid-column:1/-1"><div class="em">🫙</div><p>Niciun produs pentru filtrele alese.</p></div>';wireCar($("#grid"))}
+function renderChips(){var srcs=["Toate"].concat(Object.keys(P.reduce(function(a,p){a[p.source]=1;return a},{})));["Meta","TikTok","Bazarul","Manual"].forEach(function(s){if(srcs.indexOf(s)<0)srcs.push(s)});
+ $("#srcChips").innerHTML=srcs.map(function(s){var n=s==="Toate"?P.length:P.filter(function(p){return p.source===s}).length;return '<button class="chip'+(F.src===s?" on":"")+'" data-s="'+esc(s)+'">'+(SRC_EMO[s]||"✨")+" "+esc(s)+" <small>"+n+"</small></button>"}).join("");
+ $$("#srcChips .chip").forEach(function(c){c.onclick=function(){F.src=c.dataset.s;renderChips();renderProducts()}})}
+// ---------- detail modal
+function lineChart(price,cost,cur,w,h){w=w||560;h=h||200;var pad=34,xs=[],min=-40,max=40;for(var r=1;r<=8.001;r+=0.25){var e=calc(price,cost,r,1);if(e){xs.push([r,e.pct]);min=Math.min(min,e.pct);max=Math.max(max,e.pct)}}
+ if(!xs.length)return '<p class="note">Lipsesc prețul sau costul.</p>';max=Math.ceil(max/10)*10;min=Math.max(-60,Math.floor(min/10)*10);xs=xs.map(function(p){return [p[0],Math.max(min,p[1])]});
+ function X(r){return pad+(r-1)/7*(w-pad-10)}function Y(v){return 10+(max-v)/(max-min)*(h-34)}
+ var path=xs.map(function(p,i){return (i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)}).join(" ");
+ var area=path+" L"+X(8)+" "+Y(Math.max(min,0))+" L"+X(1)+" "+Y(Math.max(min,0))+" Z";var grid="";for(var v=min;v<=max;v+=10)grid+='<line x1="'+pad+'" x2="'+(w-10)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="currentColor" opacity=".08"/><text x="4" y="'+(Y(v)+4)+'">'+v+'%</text>';
+ for(var r2=1;r2<=8;r2++)grid+='<text x="'+(X(r2)-4)+'" y="'+(h-6)+'">'+r2+'</text>';
+ var ce=calc(price,cost,cur,1),dot=ce?'<circle cx="'+X(cur)+'" cy="'+Y(ce.pct)+'" r="6" fill="#A855F7" stroke="#fff" stroke-width="2"><animate attributeName="r" values="5;8;5" dur="1.6s" repeatCount="indefinite"/></circle>':"";
+ var tg='<line x1="'+pad+'" x2="'+(w-10)+'" y1="'+Y(S.target_pct)+'" y2="'+Y(S.target_pct)+'" stroke="#22C55E" stroke-dasharray="5 4"/><text x="'+(w-80)+'" y="'+(Y(S.target_pct)-5)+'" style="fill:#22C55E">țintă '+S.target_pct+'%</text>'+
+ '<line x1="'+pad+'" x2="'+(w-10)+'" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="#EF4444" opacity=".6"/>';
+ return '<svg viewBox="0 0 '+w+' '+h+'" width="100%" style="color:var(--txt)"><defs><linearGradient id="lg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#A855F7" stop-opacity=".35"/><stop offset="1" stop-color="#06B6D4" stop-opacity="0"/></linearGradient></defs>'+grid+'<path d="'+area+'" fill="url(#lg)"/><path d="'+path+'" fill="none" stroke="url(#lg2)" stroke-width="3" style="stroke:#A855F7"/>'+tg+dot+'</svg><div class="note">Axa X: ROAS 1–8 · punct mov = ROAS ales ('+cur+')</div>'}
+function breakBars(e){if(!e)return "";var rows=[["💵 Încasat (B)",e.B,"#06B6D4"],["📦 Marfă (H)",e.H,"#F59E0B"],["🚚 Curier+taxe (E)",e.E,"#3B82F6"],["📣 Reclame+TVA",e.ads,"#A855F7"],[(e.profit>=0?"💚":"🔻")+" Profit",e.profit,e.profit>=0?"#22C55E":"#EF4444"]];
+ var mx=Math.max.apply(null,rows.map(function(r){return Math.abs(r[1])}))||1;
+ return rows.map(function(r){return '<div class="scorebar" style="grid-template-columns:140px 1fr 80px"><span>'+r[0]+'</span><div class="t"><i style="width:'+(Math.abs(r[1])/mx*100).toFixed(1)+'%;background:'+r[2]+'"></i></div><b style="text-align:right">'+lei(r[1],2)+'</b></div>'}).join("")}
+function openDet(id){var p=byId(id);if(!p)return;var e=econ(p),m=p.monitor_econ||{},c=p.content||{};var L=[["🛒 AliExpress",p.ali_url],["🏪 Magazin concurent",p.store_url],["📢 Reclamă",p.ad_url]].filter(function(x){return safeUrl(x[1])});
+ var sc=p.score||{},scn={wow:"WOW vizual",problema:"Problemă clară",nesaturat:"Nesaturat",upsell:"Upsell/cantitate",compact:"Compact"};
+ $("#mbox").innerHTML='<div class="mhead"><div style="font-size:30px">'+emo(p)+'</div><h3>'+esc(p.title)+(p.shop_title&&p.shop_title!==p.title?'<div class="note">Titlu Shopify: '+esc(p.shop_title)+'</div>':'')+'</h3><button class="ibtn" id="mClose">✕</button></div>'+
+ '<div class="mgrid"><div>'+carousel(p,true)+'<div class="acts" style="margin-top:10px">'+L.map(function(x){return '<a class="btn s" href="'+esc(x[1])+'" target="_blank" rel="noopener noreferrer">'+x[0]+'</a>'}).join("")+'</div>'+
+ '<div class="acts" style="margin-top:8px"><button class="btn p" id="mCopyT">📋 Copiază text Shopify</button><button class="btn s" id="mCopyH">🧩 Copiază HTML</button></div>'+
+ '<div class="sec" style="margin-top:12px"><h4>📌 Info</h4><div class="kv"><span>Sursă</span><b>'+(SRC_EMO[p.source]||"")+" "+esc(p.source_detail||p.source)+'</b><span>Găsit</span><b>'+esc(dfmt(p.found_at))+'</b><span>Reclamă pornită</span><b>'+esc(p.ad_started||"—")+'</b><span>Magazin</span><b>'+esc(p.page||"—")+'</b><span>Trimis pe grup</span><b>'+(p.sent?"✅ da"+(p.sent_date?" ("+esc(p.sent_date)+")":""):"— nu")+'</b>'+(p.country?'<span>Țară reclamă</span><b>'+esc(p.country)+'</b>':'')+'</div></div></div>'+
+ '<div><div class="sec"><h4>💰 Prețuri & profit @ROAS '+S.roas+' (formula echipei)</h4><div class="kv"><span>Preț Ali</span><b>'+lei(p.ali_price,2)+'</b><span>Preț concurent</span><b>'+lei(p.competitor_price,0)+'</b><span>Preț recomandat</span><b>'+lei(p.recommended_price,0)+(p.compare_at?' <s class="note">'+lei(p.compare_at,0)+'</s>':'')+'</b><span class="note" style="grid-column:1/-1">bază preț: '+esc(p.price_basis||"—")+'</span>'+
+ '<span>Profit / comandă</span><b style="color:'+(e&&e.profit>=0?"var(--ok)":"var(--bad)")+'">'+(e?lei(e.profit,2)+" ("+pct(e.pct)+")":"—")+'</b><span>Break-even ROAS</span><b>'+(e&&e.be?e.be.toFixed(2):"—")+'</b><span>Preț minim pt. '+S.target_pct+'% @ROAS '+S.roas+'</span><b>'+(e&&e.minp?lei(e.minp,0):"—")+'</b>'+
+ (m.min_price?'<span class="note">Estimare ads-monitor (preț minim 20%)</span><b class="note">'+lei(m.min_price,0)+'</b>':'')+(m.profit!=null?'<span class="note">Estimare ads-monitor la prețul concurentului</span><b class="note">'+lei(m.profit,0)+' ('+pct(m.pct)+')</b>':'')+'</div>'+
+ '<div style="margin-top:10px">'+breakBars(e)+'</div><div style="margin-top:8px">'+lineChart(p.recommended_price,p.ali_price,S.roas,520,190)+'</div></div>'+
+ (p.nota!=null||Object.keys(sc).length?'<div class="sec"><h4>⭐ Notă '+(p.nota!=null?esc(p.nota)+'/10':'')+'</h4>'+(p.nota_reason?'<p style="margin:0 0 8px">'+esc(p.nota_reason)+'</p>':'')+Object.keys(sc).map(function(k){return '<div class="scorebar"><span>'+esc(scn[k]||k)+'</span><div class="t"><i style="width:'+(sc[k]/5*100)+'%"></i></div><b>'+esc(sc[k])+'/5</b></div>'}).join("")+'</div>':'')+
+ '<div class="sec"><h4>🎯 Unghiuri & hook-uri</h4>'+((p.angles||[]).length?(p.angles||[]).map(function(a){return '<b>'+esc(a.name)+'</b>'+((a.hooks||[]).length?'<ul class="hooks">'+a.hooks.map(function(h){return '<li>„'+esc(h)+'”</li>'}).join("")+'</ul>':'<div class="note" style="margin-bottom:6px">(hook-ul nu a fost salvat în log)</div>')}).join(""):'<span class="note">—</span>')+(p.cta?'<p><b>CTA:</b> „'+esc(p.cta)+'”</p>':'')+'</div>'+
+ (p.bf?'<div class="sec"><h4>🖤 Black Friday</h4>'+esc(p.bf_reason||"Marcat de ads-monitor ca potrivit pentru Q4")+'</div>':'')+
+ (p.verified?'<div class="sec"><h4>🤖 Verificare potrivire</h4><span class="note">'+esc(p.verified)+'</span></div>':'')+
+ '<div class="sec"><h4>🧾 Conținut Shopify '+(c.engine?'('+esc(c.engine)+')':'')+'</h4><div class="content-prev">'+esc(contentText(p))+'</div></div>'+
+ '<div class="note">Fișiere sursă: '+esc((p.files||[]).join(", "))+'</div></div></div>';
+ $("#modal").classList.add("on");document.body.style.overflow="hidden";wireCar($("#mbox"));
+ $("#mClose").onclick=closeDet;$("#mCopyT").onclick=function(){copy(contentText(p))};$("#mCopyH").onclick=function(){copy(contentHtml(p))}}
+function closeDet(){$("#modal").classList.remove("on");document.body.style.overflow=""}
+$("#modal").addEventListener("click",function(e){if(e.target.id==="modal")closeDet()});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDet()});
+document.addEventListener("click",function(e){var t=e.target.closest("[data-copy],[data-det],.pod,.rank");if(!t)return;
+ if(t.dataset.copy){var p=byId(t.dataset.copy);if(p)copy(contentText(p));}else if(t.dataset.det||t.dataset.id&&(t.classList.contains("pod")||t.classList.contains("rank")))openDet(t.dataset.det||t.dataset.id)});
+// ---------- top
+function renderTop(){var L=P.slice().sort(sorter("nota"));var top=L.slice(0,3),med=["🥇","🥈","🥉"],ord=[1,0,2];
+ $("#podium").innerHTML=top.length?ord.filter(function(i){return top[i]}).map(function(i){var p=top[i],e=econ(p),im=firstImg(p);return '<div class="pod g'+(i+1)+'" data-id="'+esc(p.id)+'" style="animation-delay:'+i*90+'ms"><div class="medal">'+med[i]+'</div>'+(im?'<img src="'+im+'" alt=""/>':'<div style="aspect-ratio:1;border-radius:14px;overflow:hidden;margin:6px 0">'+ph(p)+'</div>')+'<h4>'+esc(p.title)+'</h4><div class="meta" style="justify-content:center"><span>⭐ '+(p.nota!=null?esc(p.nota)+'/10':'—')+'</span><span>💚 '+(e?lei(e.profit,0):'—')+'</span><span>📊 '+(e?pct(e.pct):'—')+'</span></div></div>'}).join(""):'';
+ $("#ranks").innerHTML=L.slice(3).map(function(p,i){var e=econ(p),im=firstImg(p);return '<div class="rank" data-id="'+esc(p.id)+'"><div class="n">'+(i+4)+'</div>'+(im?'<img src="'+im+'" alt=""/>':'<div class="mini">'+emo(p)+'</div>')+'<div class="tt"><b>'+esc(p.title)+'</b><span>⭐ '+(p.nota!=null?esc(p.nota)+'/10':'fără notă')+' · 🛒 '+lei(p.ali_price,2)+' → 🏷️ '+lei(p.recommended_price,0)+'</span></div><div style="text-align:right"><b style="color:'+(e&&e.profit>=0?"var(--ok)":"var(--bad)")+'">'+(e?lei(e.profit,0):'—')+'</b><div class="note">'+(e?pct(e.pct):'')+'</div></div></div>'}).join("")}
+// ---------- calculator
+function renderCalc(){var sel=$("#cProd");if(sel.options.length<2){P.slice().sort(sorter("date")).forEach(function(p){var o=document.createElement("option");o.value=p.id;o.textContent=(p.title||"").slice(0,60)+" · Ali "+lei(p.ali_price,2);sel.appendChild(o)})}
+ var price=+$("#cPrice").value||0,cost=+$("#cCost").value||0,n=Math.max(1,+$("#cN").value||1),r=+$("#cRoas").value||4;$("#cRoasV").textContent=r.toFixed(1);
+ var e=calc(price,cost,r,n),e1=calc(price,cost,r,1);$("#cParams").innerHTML="rată livrare "+S.delivery+" · curier "+S.courier+" lei · taxă "+S.fee+" lei · TVA reclame "+Math.round(S.ads_vat*100)+"% · țintă "+S.target_pct+"%";
+ if(!e){$("#cKpis").innerHTML='<p class="note">Completează prețul.</p>';return}
+ var ok=e.pct>=S.target_pct;$("#cKpis").innerHTML=[["💚 Profit total ("+n+" comenzi)",lei(e.profit,0),1],["📊 Profit % din încasat",pct(e.pct),1],["🧾 Profit / comandă",lei(e1.profit,2)],["⚖️ Break-even ROAS",e.be?e.be.toFixed(2):"—"],["🎯 Preț minim "+S.target_pct+"% @ROAS "+r.toFixed(1),e.minp?lei(e.minp,0):"imposibil"],["📣 Buget reclame (cu TVA)",lei(e.ads,0)]]
+ .map(function(k){return '<div class="kpi'+(k[2]?" big":"")+'"><span>'+k[0]+'</span><b style="'+(k[2]?"color:"+(ok?"var(--ok)":e.profit>=0?"var(--warn)":"var(--bad)"):"")+'">'+k[1]+'</b></div>'}).join("")+'<div class="kpi" style="grid-column:1/-1;text-align:center;font-weight:800">'+(ok?"✅ Peste ținta de "+S.target_pct+"% la ROAS "+r.toFixed(1):e.profit>=0?"⚠️ Profitabil, dar sub ținta de "+S.target_pct+"%":"🔻 Pierdere la ROAS "+r.toFixed(1))+'</div>';
+ $("#cChart").innerHTML=lineChart(price,cost,r,640,220);$("#cBreak").innerHTML=breakBars(e1)+'<div style="margin-top:8px">'+sbar(e1)+'</div>'+legend();
+ var rows=[2,2.5,3,3.5,4,5,6].map(function(R){var x=calc(price,cost,R,1);return '<tr class="'+(Math.abs(R-r)<.05?"hl":"")+'"><td>ROAS '+R+'</td><td>'+lei(x.ads,2)+'</td><td>'+lei(x.profit,2)+'</td><td>'+pct(x.pct)+'</td><td>'+(x.pct>=S.target_pct?"✅":x.profit>=0?"⚠️":"🔻")+'</td></tr>'}).join("");
+ $("#cTable").innerHTML='<tr><th>ROAS</th><th>Reclamă/cmd</th><th>Profit/cmd</th><th>Profit %</th><th></th></tr>'+rows;
+ $("#cFormula").textContent="A = preț × N = "+lei(e.A,0)+"\nB = "+S.delivery+" × A = "+lei(e.B,2)+"   (încasat după refuzuri)\nE = "+S.courier+"·N + "+S.fee+"·N = "+lei(e.E,2)+"\nreclame = A / ROAS × "+(1+S.ads_vat).toFixed(2)+" = "+lei(e.ads,2)+"\nH = "+S.delivery+" × cost × N = "+lei(e.H,2)+"\nprofit = B − E − reclame − H = "+lei(e.profit,2)+"\nprofit % = profit / B = "+pct(e.pct)}
+["cPrice","cCost","cN","cRoas"].forEach(function(id){$("#"+id).addEventListener("input",renderCalc)});
+$("#cProd").onchange=function(){var p=byId(this.value);if(p){$("#cPrice").value=p.recommended_price||"";$("#cCost").value=p.ali_price;}renderCalc()};
+// ---------- black friday
+function renderBF(){var bfd=new Date("2026-11-27T00:00:00+02:00"),ms=bfd-Date.now();var d=Math.max(0,Math.floor(ms/864e5)),h=Math.max(0,Math.floor(ms/36e5)%24),m=Math.max(0,Math.floor(ms/6e4)%60);
+ $("#bfCd").innerHTML=[[d,"zile"],[h,"ore"],[m,"minute"]].map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join("");
+ var L=P.filter(function(p){return p.bf}),K=P.filter(function(p){return !p.bf&&p.q4_kw});
+ $("#bfGrid").innerHTML=L.length?L.map(card).join(""):'<div class="empty" style="grid-column:1/-1"><div class="em">🖤</div><p>Încă niciun produs marcat „Black Friday” de ads-monitor. Marcajul apare la produsele noi verificate cu Claude.</p></div>';
+ $("#bfKwT").textContent=K.length?"🎁 Posibil potrivite Q4 (cuvinte cheie din ads-monitor: cadou, Crăciun, iarnă, gadget…) — "+K.length:"";$("#bfKw").innerHTML=K.map(card).join("");wireCar($("#v-bf"))}
+// ---------- history
+function renderHist(){var R=(D.runs_by_day||[]).slice(-30);if(R.length){var w=760,h=200,pad=30,mx=Math.max.apply(null,R.map(function(r){return r.checked}))||1,bw=(w-pad-10)/R.length;
+ var bars=R.map(function(r,i){var x=pad+i*bw,H=function(v){return v/mx*(h-40)};return '<g><title>'+r.date+': '+r.runs+' rulări, '+r.checked+' verificate, '+r.ok+' OK, '+r.sent+' trimise</title><rect x="'+(x+2)+'" y="'+(h-24-H(r.checked))+'" width="'+(bw-4)+'" height="'+H(r.checked)+'" rx="4" fill="#3B82F6" opacity=".55"><animate attributeName="height" from="0" to="'+H(r.checked)+'" dur=".6s"/></rect>'+
+ '<rect x="'+(x+bw*.25)+'" y="'+(h-24-Math.max(3,r.ok/mx*(h-40)*6))+'" width="'+(bw*.5)+'" height="'+Math.max(r.ok?3:0,r.ok/mx*(h-40)*6)+'" rx="3" fill="#A855F7"/>'+(r.sent?'<text x="'+(x+bw/2-4)+'" y="'+(h-28-H(r.checked))+'" style="fill:#22C55E;font-weight:800">'+r.sent+'</text>':'')+
+ (i%Math.ceil(R.length/10)===0?'<text x="'+(x+2)+'" y="'+(h-8)+'">'+r.date.slice(5)+'</text>':'')+'</g>'}).join("");
+ $("#hChart").innerHTML='<svg viewBox="0 0 '+w+' '+h+'" width="100%">'+bars+'</svg><div class="note">Bara albastră = produse verificate · mov = potriviri OK (scală ×6) · cifra verde = trimise. Ultima rulare: '+esc(D.last_run||"—")+'</div>'}else $("#hChart").innerHTML='<p class="note">Fără rulări.</p>';
+ var g={};P.forEach(function(p){var k=p.found_date||"necunoscut";(g[k]=g[k]||[]).push(p)});
+ $("#timeline").innerHTML=Object.keys(g).sort().reverse().map(function(k){return '<div class="tl-day">'+esc(k==="necunoscut"?k:new Date(k+"T12:00").toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"long"}))+' <span class="pill">'+g[k].length+'</span></div>'+
+ g[k].map(function(p){var e=econ(p),im=firstImg(p);return '<div class="rank" data-id="'+esc(p.id)+'"><div class="n" style="font-size:12px;width:44px">'+esc((p.found_at||"").slice(11,16))+'</div>'+(im?'<img src="'+im+'" alt=""/>':'<div class="mini">'+emo(p)+'</div>')+'<div class="tt"><b>'+esc(p.title)+'</b><span>'+(SRC_EMO[p.source]||"")+' '+esc(p.source)+' · '+esc(p.page||"")+(p.sent?' · ✅ trimis':'')+'</span></div><div style="text-align:right"><b>'+lei(p.ali_price,2)+'</b><div class="note">'+(e?"💚 "+lei(e.profit,0):"")+'</div></div></div>'}).join("")}).join("")}
+// ---------- settings
+function renderSet(){$("#sDel").value=S.delivery;$("#sCour").value=S.courier;$("#sFee").value=S.fee;$("#sVat").value=S.ads_vat;$("#sRoas").value=S.roas;$("#sTgt").value=S.target_pct;
+ var c=D.counts||{};$("#sInfo").innerHTML=[["Generat la",D.generated_at+" (ora RO)"],["Ultima rulare ads-monitor",D.last_run||"—"],["Produse",c.products],["Trimise pe grup",c.sent],["Cu notă",c.with_nota],["Cu poză",c.with_image],["Fișiere log citite",c.log_files],["Ascunse (doar în dry-run-urile de test din 21.09)",c.excluded_dev_dry_runs||0],["Sursă",D.source_dir],["Mod",OFFLINE?"offline (index.html local)":"online (/ecom)"]]
+ .map(function(r){return '<span>'+esc(r[0])+'</span><b>'+esc(r[1]==null?"—":r[1])+'</b>'}).join("");if(OFFLINE){$("#sRefresh").disabled=true;$("#sRefreshNote").textContent="Offline: rulează build_data.py (sau așteaptă task-ul de 15 min) și reîncarcă pagina."}}
+$("#sSave").onclick=function(){S.delivery=+$("#sDel").value;S.courier=+$("#sCour").value;S.fee=+$("#sFee").value;S.ads_vat=+$("#sVat").value;S.roas=+$("#sRoas").value||4;S.target_pct=+$("#sTgt").value;save();render();toast("💾 Setări salvate")};
+$("#sReset").onclick=function(){var t=S.theme;S=Object.assign({},DEF,{theme:t});save();render();toast("↩️ Valori implicite")};
+$("#sCsv").onclick=function(){var H=["titlu","sursa","gasit","trimis","nota","pret_ali","link_ali","pret_concurent","pret_recomandat","profit_comanda","profit_pct","breakeven_roas","magazin","unghiuri"];
+ var rows=P.map(function(p){var e=econ(p)||{};return [p.title,p.source,p.found_at,p.sent?"da":"nu",p.nota,p.ali_price,p.ali_url,p.competitor_price,p.recommended_price,e.profit&&e.profit.toFixed(2),e.pct&&e.pct.toFixed(1),e.be&&e.be.toFixed(2),p.store_url,(p.angles||[]).map(function(a){return a.name}).join(" | ")]});
+ var csv=[H].concat(rows).map(function(r){return r.map(function(v){v=v==null?"":String(v);return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(",")}).join("\n");
+ var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download="ecom_produse.csv";a.click()};
+$("#sRefresh").onclick=function(){var b=this;b.disabled=true;b.textContent="⏳ Se reconstruiește…";fetch("/api/ecom/refresh",{method:"POST",credentials:"same-origin"}).then(function(r){return r.json()}).then(function(j){toast(j.ok?"🔄 Pornit; reîncarc în 20 s":"⚠️ "+(j.error||"eroare"));setTimeout(function(){fetchData();b.disabled=false;b.textContent="🔄 Reconstruiește datele acum"},20000)}).catch(function(){b.disabled=false;b.textContent="🔄 Reconstruiește datele acum";toast("⚠️ Eroare")})};
+// ---------- routing
+var VIEWS=["produse","top","calc","bf","istoric","setari"];
+function go(v){if(VIEWS.indexOf(v)<0)v="produse";$$("#tabs button").forEach(function(b){b.classList.toggle("on",b.dataset.v===v)});$$(".view").forEach(function(s){s.classList.toggle("on",s.id==="v-"+v)});
+ if(location.hash!=="#"+v)history.replaceState(null,"","#"+v);renderView(v);window.scrollTo({top:0,behavior:"smooth"})}
+$$("#tabs button").forEach(function(b){b.onclick=function(){go(b.dataset.v)}});window.addEventListener("hashchange",function(){go(location.hash.slice(1))});
+function renderView(v){if(!D)return;({produse:function(){renderStats();renderChips();renderProducts()},top:renderTop,calc:renderCalc,bf:renderBF,istoric:renderHist,setari:renderSet}[v]||function(){})()}
+function render(){applyTheme();renderView((location.hash||"#produse").slice(1)||"produse")}
+// filters wiring
+$("#q").addEventListener("input",function(){F.q=this.value;renderProducts()});
+$("#minNota").addEventListener("input",function(){F.minNota=+this.value;$("#minNotaV").textContent=F.minNota?F.minNota+"+":"toate";renderProducts()});
+$("#maxAli").addEventListener("input",function(){F.maxAli=+this.value;$("#maxAliV").textContent=F.maxAli>=+this.max?"oricât":F.maxAli+" lei";renderProducts()});
+$("#period").onchange=function(){F.period=+this.value;renderProducts()};$("#sort").onchange=function(){F.sort=this.value;renderProducts()};
+$("#onlySent").onchange=function(){F.onlySent=this.checked;renderProducts()};
+// ---------- data
+function setData(d){D=d;P=(d.products||[]).filter(function(p){return p.ali_price!=null});var mxa=Math.ceil(Math.max.apply(null,P.map(function(p){return p.ali_price}).concat([10])));
+ $("#maxAli").max=Math.max(10,mxa);$("#maxAli").value=$("#maxAli").max;F.maxAli=+$("#maxAli").max;$("#maxAliV").textContent="oricât";
+ $("#upd").innerHTML="🟢 "+esc(P.length)+" produse · actualizat "+esc((d.generated_at||"").slice(11,16)||"—");$("#foot").textContent="date generate "+(d.generated_at||"—")+" · ultima rulare ads-monitor "+(d.last_run||"—")+(OFFLINE?" · mod offline":"");
+ go((location.hash||"#produse").slice(1))}
+function fetchData(){if(OFFLINE){setData(window.ECOM_DATA);return}
+ fetch("/api/ecom/products",{credentials:"same-origin",cache:"no-store"}).then(function(r){if(r.status===401){location.href="/admin/login?next=/ecom";throw 0}return r.json()}).then(setData).catch(function(e){if(e!==0)$("#upd").textContent="⚠️ nu pot încărca datele"})}
+$("#reloadBtn").onclick=function(){fetchData();toast("🔄 Date reîncărcate")};
+applyTheme();fetchData();setInterval(function(){if(!OFFLINE&&document.visibilityState==="visible")fetchData()},5*60*1000);
+})();
+</script>
+</body>
+</html>
