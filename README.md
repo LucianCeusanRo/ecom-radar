@@ -6,6 +6,7 @@
 
 **Daily product research on autopilot: ads → supplier match → margin score → Shopify draft. A human still decides.**
 
+  <a href="https://ecom-radar-demo.vercel.app"><img alt="Live demo" src="https://img.shields.io/badge/Live%20demo-open-0ea5e9"></a>
   <a href="https://github.com/LucianCeusanRo/ecom-radar/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/LucianCeusanRo/ecom-radar/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green.svg"></a>
   <img alt="Python 3.11+" src="https://img.shields.io/badge/language-Python%203.11%2B-blue">
@@ -17,6 +18,8 @@
 </div>
 
 <p align="center"><img src="docs/screenshots/ecom-radar.webp" alt="Ecom Radar screenshot" width="900"></p>
+
+<p align="center"><strong><a href="https://ecom-radar-demo.vercel.app">▶ Live demo</a></strong> — open it in the browser and try it yourself.</p>
 
 ## 📑 Table of contents
 
